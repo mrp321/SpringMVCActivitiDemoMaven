@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.dao.UserDao">
+
+	<!-- 创建日期超过指定天数sql -->
+	<sql id="logOverDaysSql">
+		TO_DAYS(NOW()) - TO_DAYS(create_time) &gt;= #{logOverDays}
+	</sql>
+	
+	<!-- 根据用户id查询用户 -->
+	<select id="queryUserByUserId" parameterType="String" resultType="User">
+		SELECT
+			user_id AS userId,
+			password
+		FROM
+			user
+		WHERE
+			user_id = #{userId}
+		AND
+			del_flag = 0
+	</select>
+	
+	<!-- 将超过指定天数的日志转移到日志记录历史表中 -->
+	<insert id="tranferLogToHistory" parameterType="Integer">
+		INSERT INTO
+			log_his(id, url, user_id, create_time, update_time, del_flag)
+		SELECT 
+			id, url, user_id, create_time, update_time, del_flag
+		FROM
+			log 
+		WHERE
+			<include refid="logOverDaysSql"></include>	
+	</insert>
+	
+	
+	<!-- 清除log表中超过指定天数的日志 -->
+	<delete id="delLogOverDays" parameterType="Integer">
+		DELETE FROM
+			log 
+		WHERE
+			<include refid="logOverDaysSql"></include>
+	</delete>
+	
+</mapper>
