@@ -360,12 +360,18 @@
 			<groupId>org.vaadin.addons</groupId>
 			<artifactId>dcharts-widget</artifactId>
 			<version>0.10.0</version>
+			<!-- 手动引入本地jar包 -->
+			<!-- 需要配置scope节点内容为system -->
+			<!-- systemPath节点内容为jar包路径 -->
+			 <scope>system</scope>  
+			 <systemPath>${project.basedir}/src/main/webapp/WEB-INF/libs/dcharts-widget-0.10.0.jar</systemPath> 
 		</dependency>
 		<dependency>
 			<groupId>org.mule.tests</groupId>
 			<artifactId>mule-tests-functional</artifactId>
 			<version>3.5.0</version>
-			<scope>test</scope>
+			 <scope>system</scope>
+			 <systemPath>${project.basedir}/src/main/webapp/WEB-INF/libs/mule-tests-functional-3.5.0.jar</systemPath>   
 		</dependency>
 
 	</dependencies>
@@ -408,19 +414,20 @@
 				<includes>
 					<include>**/*.properties</include>
 					<include>**/*.xml</include>
+					<include>**/*.sql</include>
 				</includes>
 				<filtering>true</filtering>
 			</resource>
 		</resources>
 	</build>
 
-	<repositories>
+	<!-- <repositories>
 		<repository>
 			<id>central</id>
 			<url>http://repo1.maven.org/maven2</url>
-			<!-- <url>http://maven.aliyun.com/nexus/content/groups/public/</url> -->
+			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
 			<snapshots>
-				<enabled>true</enabled>
+				<enabled>false</enabled>
 			</snapshots>
 		</repository>
 		<repository>
@@ -428,7 +435,7 @@
 			<url>https://repository.apache.org/content/groups/snapshots</url>
 			<name>Apache Snapshots Repository</name>
 			<snapshots>
-				<enabled>true</enabled>
+				<enabled>false</enabled>
 			</snapshots>
 		</repository>
 		<repository>
@@ -439,5 +446,5 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
-	</repositories>
+	</repositories> -->
 </project>
