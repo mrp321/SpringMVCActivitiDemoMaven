@@ -4,11 +4,11 @@
     <startEvent id="startevent1" name="Start"></startEvent>
     <userTask id="apply" name="申请" activiti:assignee="#{userId}"></userTask>
     <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="apply"></sequenceFlow>
-    <userTask id="approval1" name="审批1" activiti:assignee="张三"></userTask>
+    <userTask id="approval1" name="审批1" activiti:assignee="zhangsan"></userTask>
     <sequenceFlow id="flow2" sourceRef="apply" targetRef="approval1"></sequenceFlow>
     <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>
     <sequenceFlow id="flow3" sourceRef="approval1" targetRef="exclusivegateway1"></sequenceFlow>
-    <userTask id="approval2" name="审批2" activiti:assignee="李四"></userTask>
+    <userTask id="approval2" name="审批2" activiti:assignee="lisi"></userTask>
     <endEvent id="endevent1" name="End"></endEvent>
     <sequenceFlow id="flow4" sourceRef="exclusivegateway1" targetRef="approval2">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[#{money > 1000}]]></conditionExpression>
@@ -31,9 +31,6 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="exclusivegateway1" id="BPMNShape_exclusivegateway1">
         <omgdc:Bounds height="40.0" width="40.0" x="462.0" y="117.0"></omgdc:Bounds>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="usertask2" id="BPMNShape_usertask2">
-        <omgdc:Bounds height="55.0" width="105.0" x="550.0" y="56.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">
         <omgdc:Bounds height="35.0" width="35.0" x="659.0" y="190.0"></omgdc:Bounds>
