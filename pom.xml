@@ -379,6 +379,7 @@
 		<plugins>
 			<plugin>
 				<!-- 将当前项目打包为war包 -->
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
 					<version>2.5</version>

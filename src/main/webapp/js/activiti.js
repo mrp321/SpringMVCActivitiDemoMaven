@@ -18,7 +18,7 @@ var page = new Vue({
 			page.queryTask("lisi");
 		})
 	},
-	methods : function() {
+	methods : {
 		// 开启工作流
 		apply : function() {
 			var userId = $("#userId").val();
